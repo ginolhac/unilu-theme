@@ -12,7 +12,7 @@ quarto use template ginolhac/unilu-theme
 
 ## Output
 
-Preview this [Quarto reveal.js theme](https://ginolhac.github.io/unilu-theme)
+Preview this [Quarto reveal.js theme](https://ginolhac.github.io/unilu-theme) on `gh-pages`.
 
 ## Acknowledgements
 
