@@ -1,0 +1,138 @@
+---
+title: "Data science with R"
+subtitle: "Using the tidyverse and Quarto"
+date: today
+date-format: long
+institute: Rworkshop
+author: "Aurélien Ginolhac"
+format:
+  unilu-theme-revealjs
+---
+
+
+## First slide
+
+- Chunk options are `hashpipe`, completion works great
+- Great trick in RStudio: <kbd>CTRL</kbd>+<kbd>,<kbd>
+
+#### `echo: fenced` ideal for teaching
+
+- Fragment for **increment**
+
+
+```{r}
+#| echo: fenced
+#| output-location: column-fragment
+1 + 3
+mean(c(1, 3, 6))
+```
+
+## Practical {.slide-practical}
+
+Using `.slide-practical` class to the header2
+
+## Columns as fenced divs `{.columns}`
+
+
+Trying to get rid of [xaringanExtra](https://pkg.garrickadenbuie.com/xaringanExtra/#/)^[Developed by [gabenbuie](https://github.com/gadenbuie)]
+
+:::: {.columns}
+
+::: {.column width="40%"}
+contents... 40%
+
+
+:::
+
+::: {.column width="60%"}
+contents... 60%
+:::
+
+::::
+
+## YAML
+
+`::: {.panel-tabset}`
+
+::: {.panel-tabset}
+
+## yaml
+```
+---
+format: test
+---
+```
+## Or nothing
+
+:::
+
+
+## Layout for images
+
+::: {layout-ncol=2}
+
+![Install `dplyr` via RStudio](https://i.imgur.com/hziKGjp.png){.center}
+
+![Install using the console](https://i.imgur.com/RUzyzkw.png)
+
+[Two ways of installing **packages**]{.center-x}
+
+:::
+
+
+## `.r-fit-text` class
+
+
+::: {.r-fit-text}
+Big Text
+:::
+
+
+
+## Layout for chunks too
+
+-Highlight code lines {.smaller} (`.smaller` class)
+- Execute code _inside_ a caption with `!expr`
+
+```{r}
+#| echo: fenced
+#| layout-ncol: 2
+#| code-line-numbers: "|3-4,6"
+#| fig-cap: !expr glue::glue("Swiss data are {nrow(swiss)} rows")
+#| fig-height: 3
+plot(swiss$Agriculture, swiss$Fertility)
+plot(swiss$Agriculture, swiss$Education)
+```
+
+
+## Figure layout, custom
+
+```{r}
+#| echo: fenced
+#| layout: [[45,-10, 45], [50, 50]]
+#| fig-height: 5
+#| fig-align: center
+#| dpi: 300
+
+```
+
+## Layout n-col or [[]] syntax
+
+::: {layout-ncol=2}
+
+toto
+
+titi
+
+:::
+
+::: {layout="[[50,50]]"}
+
+toto
+
+titi
+
+:::
+
+And [fragment]{.fragment} [too]{.fragment}
+

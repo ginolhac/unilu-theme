@@ -1,0 +1,78 @@
+/*-- scss:defaults --*/
+
+// fonts, port code from xaringan
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Fira+Mono&display=swap);
+
+$font-family-sans-serif: "Roboto Condensed", "Book Antiqua", Palatino,
+  FreeSerif, serif !default;
+
+
+// colors
+$body-bg: #FFFFFF !default;
+$body-color: #000 !default;
+$link-color: #00A4E1 !default;
+$selection-bg: #26351c !default;
+// from https://github.com/InseeFrLab/onyxia-quarto
+$orange: rgb(255, 86, 44);
+$black: rgb(44, 50, 63);
+$white: rgb(241, 240, 235);
+$green: rgb(186, 255, 41);
+
+// headings
+$presentation-heading-font: $font-family-sans-serif  !default;
+$presentation-heading-color: #00A4E1 !default;
+$presentation-title-slide-text-align: center !default;
+
+// code
+$code-color: #88398A !default;
+$font-family-monospace: "Fira Mono", "Liberation Mono", monospace  !default;
+$presentation-font-size-root: 40px !default;
+
+
+/*-- scss:rules --*/
+
+/* Title page custom */
+/* adapted from https://github.com/mcanouil/quarto-revealjs-storybook  */
+#title-slide .title, #title-slide .subtitle {
+  opacity: 0.80;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#title-slide .title {
+  color: #515151;
+  font-weight: bold;
+  margin-top: -20px;
+  margin-bottom: 5px;
+  text-decoration: underline;
+}
+
+#title-slide .subtitle {
+  color: $presentation-heading-color;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 1.2em;
+}
+
+
+#title-slide .institute, #title-slide .author, #title-slide .date {
+  opacity: 0.50;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+#title-slide .author,
+#title-slide .date,
+#title-slide .institute {
+  font-size: 1em;
+  margin-top: 20px;
+}
+
+.reveal .slide-practical {
+    background-color: #e4f0ff;
+}

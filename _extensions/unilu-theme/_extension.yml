@@ -1,0 +1,21 @@
+title: "Data science with tidyverse"
+subtitle: "Course content"
+author: Aurélien Ginolhac
+date: today
+date-format: long
+institute: Rworkshop
+version: 1.0.0
+contributes:
+  formats:
+    revealjs:
+      theme: [default, lectures.scss]
+      logo: uni-logo.png
+      slide-number: c/t
+      show-slide-number: all
+      preview-links: auto
+      footnotes-hover: true
+      chalkboard: true
+      width: 1200
+      height: 675
+      format-resources:
+        - uni-logo.png

@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.html
+*_files/
+/renv/
+/.Rprofile
+/*.Rproj
