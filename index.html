@@ -10,7 +10,6 @@
   <meta name="generator" content="quarto-1.1.120">
 
   <meta name="author" content="Aurélien Ginolhac">
-  <meta name="dcterms.date" content="2022-09-09">
   <title>Data science with R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -395,16 +394,21 @@
   <p class="subtitle">Using the tidyverse and Quarto</p>
   <p class="author">Aurélien Ginolhac</p>
   <p class="institute">Rworkshop</p>
-  <p class="date">September 9, 2022</p>
+  <p class="date">Friday, the 9<sup style="font-size:65%;font-style:italic;">th</sup> of September, 2022</p>
 </section>
 
 <section id="first-slide" class="slide level2">
 <h2>First slide</h2>
+<div>
 <ul>
-<li>Chunk options are <code>hashpipe</code>, completion works great</li>
-<li>Great trick in RStudio: <kbd>CTRL</kbd>+<kbd>,<kbd></kbd></kbd></li>
+<li class="fragment"><code>{.incremental}</code> fenced div <span class="emoji" data-emoji="+1">👍</span></li>
+<li class="fragment"><code>from: markdown+emoji</code> in header allows emoji usage <span class="emoji" data-emoji="smile">😄</span></li>
+<li class="fragment">Chunk options are <code>hashpipe</code>, completion works great <span class="emoji" data-emoji="wave">👋</span></li>
+<li class="fragment">Great trick in RStudio: <code>CTRL</code>+<span class="huge"><code>,</code></span> <span class="emoji" data-emoji="heavy_check_mark">✔️</span></li>
 </ul>
-<h4 id="echo-fenced-ideal-for-teaching"><code>echo: fenced</code> ideal for teaching</h4>
+</div>
+<div class="fragment">
+<p><code>echo: fenced</code> ideal for teaching</p>
 <ul>
 <li>Fragment for <strong>increment</strong></li>
 </ul>
@@ -422,19 +426,44 @@
 </div>
 </div>
 </div>
+</div>
 </section>
-<section id="practical" class="slide level2 slide-practical">
+<section id="practical" class="slide level2" data-background="#e4f0ff">
 <h2>Practical</h2>
-<p>Using <code>.slide-practical</code> class to the header2</p>
+<p>Using <code>{background="#e4f0ff"}</code> class to the header2</p>
+<p>Absolute positioning of image and text, increment with <code>. . .</code></p>
+<div class="absolute" style="top: 35%; left: 15%; ">
+<p><img data-src="https://rworkshop.uni.lu/img/rstudio_blank.png"></p>
+</div>
+<div class="fragment">
+<div class="absolute" style="left: 25%; bottom: 10%; ">
+<div style="color: #FF0000">
+<p>Console</p>
+</div>
+</div>
+</div>
 </section>
-<section id="columns-as-fenced-divs-.columns" class="slide level2">
-<h2>Columns as fenced divs <code>{.columns}</code></h2>
+<section id="columns-as-fenced-divs-.columns-and-latex" class="slide level2 smaller">
+<h2>Columns as fenced divs <code>{.columns}</code> and LaTex</h2>
 <p>Trying to get rid of <a href="https://pkg.garrickadenbuie.com/xaringanExtra/#/">xaringanExtra</a><sup>1</sup></p>
 <div class="columns">
 <div class="column" style="width:40%;">
 <p>contents… 40%</p>
+<span class="math display">\[\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}\]</span>
 </div><div class="column" style="width:60%;">
-<p>contents… 60%</p>
+<p>Playing with <code>{.fragment}</code> transitions</p>
+<div class="fragment highlight-red">
+<p>Highlight red</p>
+</div>
+<div class="fragment fade-in">
+<p>Fade in</p>
+</div>
+<div class="fragment fade-up">
+<p>Slide up while fading in</p>
+</div>
 </div>
 </div>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Developed by <a href="https://github.com/gadenbuie">gabenbuie</a></p></li></ol></aside></section>
@@ -478,7 +507,7 @@ format: test
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><span class="center-x">Two ways of installing <strong>packages</strong></span></p>
+<p><span class="center">Two ways of installing <strong>packages</strong></span></p>
 </div>
 </div>
 </div>
@@ -488,14 +517,18 @@ format: test
 <div class="r-fit-text">
 <p>Big Text</p>
 </div>
+<p>More in the official <a href="https://quarto.org/docs/presentations/revealjs/demo/#/title-slide">Quarto Presentation demo</a> and available <a href="https://github.com/quarto-dev/quarto-web/blob/main/docs/presentations/revealjs/demo/index.qmd">code</a></p>
 </section>
 <section id="layout-for-chunks-too" class="slide level2">
 <h2>Layout for chunks too</h2>
-<p>-Highlight code lines {.smaller} (<code>.smaller</code> class) - Execute code <em>inside</em> a caption with <code>!expr</code></p>
+<ul>
+<li>Highlight code lines, incremental with <code>|</code></li>
+<li>Execute code <em>inside</em> a caption with <code>!expr</code></li>
+</ul>
 <div>
-<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="|3-4,6"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="in">```{r}</span></span>
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="|3-4,6|7"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="in">```{r}</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co">#| layout-ncol: 2</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#| code-line-numbers: "|3-4,6"</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#| code-line-numbers: "|3-4,6|7"</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="co">#| fig-cap: !expr glue::glue("Swiss data are {nrow(swiss)} rows")</span></span>
 <span id="cb4-5"><a href="#cb4-5"></a><span class="co">#| fig-height: 3</span></span>
 <span id="cb4-6"><a href="#cb4-6"></a><span class="fu">plot</span>(swiss<span class="sc">$</span>Agriculture, swiss<span class="sc">$</span>Fertility)</span>
@@ -522,38 +555,8 @@ format: test
 </div>
 </div>
 </div>
-</section>
-<section id="figure-layout-custom" class="slide level2">
-<h2>Figure layout, custom</h2>
-<div class="cell quarto-layout-panel">
-
-</div>
-</section>
-<section id="layout-n-col-or-syntax" class="slide level2">
-<h2>Layout n-col or [[]] syntax</h2>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p>toto</p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p>titi</p>
-</div>
-</div>
-</div>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p>toto</p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p>titi</p>
-</div>
-</div>
-</div>
-<p>And <span class="fragment">fragment</span> <span class="fragment">too</span></p>
-
-<img src="_extensions/unilu-theme/uni-logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<p><img src="_extensions/unilu-theme/uni-logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
 
 </div>
 </section>
