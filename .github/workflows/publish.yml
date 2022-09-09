@@ -4,14 +4,13 @@ on:
 
 name: Quarto Publish
 
-env:
-  RENV_PATHS_ROOT: ~/.local/share/renv
-
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      RENV_PATHS_ROOT: ~/.local/share/renv
     steps:
       - name: Cache packages
         uses: actions/cache@v1
