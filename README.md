@@ -4,10 +4,16 @@ A [Quarto](https://quarto.org) extension for authoring [r-training](https://gitl
 
 ## Installation
 
-To start a new presentation:
+- To start a new presentation in a new folder:
 
 ``` bash
 quarto use template ginolhac/unilu-theme
+```
+
+- To install the theme in an existing folder:
+
+``` bash
+quarto install extension ginolhac/unilu-theme
 ```
 
 ## Output
