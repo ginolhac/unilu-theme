@@ -26,8 +26,8 @@ $presentation-heading-color: #00A4E1 !default;
 $presentation-title-slide-text-align: center !default;
 
 // code
-$code-color: #88398A !default;
-$font-family-monospace: "Fira Mono", "Liberation Mono", monospace  !default;
+//$code-color: #88398A !default;
+//$font-family-monospace: "Fira Mono", "Liberation Mono", monospace  !default;
 $presentation-font-size-root: 40px !default;
 
 
@@ -46,7 +46,6 @@ $presentation-font-size-root: 40px !default;
   font-weight: bold;
   margin-top: -20px;
   margin-bottom: 5px;
-  text-decoration: underline;
 }
 
 #title-slide .subtitle {
@@ -56,7 +55,6 @@ $presentation-font-size-root: 40px !default;
   margin-bottom: 5px;
   font-size: 1.2em;
 }
-
 
 #title-slide .institute, #title-slide .author, #title-slide .date {
   opacity: 0.50;
@@ -73,6 +71,25 @@ $presentation-font-size-root: 40px !default;
   margin-top: 20px;
 }
 
+#title-slide .institute {
+  font-weight: bold;
+  color: $orange;
+}
+
 .reveal .slide-practical {
-    background-color: #e4f0ff;
+  background-color: #e4f0ff;
+}
+
+.reveal .slide blockquote {
+  border-left: 3px solid $text-muted;
+  padding-left: 0.5em;
+}
+
+.reveal .slide a {
+  text-decoration: underline;
+  text-decoration-color: $orange;
+}
+
+.red {
+  color: #cc0000;
 }

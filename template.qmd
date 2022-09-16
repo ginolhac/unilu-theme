@@ -12,6 +12,8 @@ title-slide-attributes:
   data-background-image: https://tidyverse.tidyverse.org/logo.png
   data-background-position: "50% 10%"
   data-background-size: "150px"
+execute: 
+  echo: true
 ---
 
 
