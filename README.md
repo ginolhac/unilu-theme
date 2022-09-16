@@ -24,8 +24,9 @@ Preview this [Quarto reveal.js theme](https://ginolhac.github.io/unilu-theme) on
 
 ## Acknowledgements
 
--   [Romain Lesur]() for the [onyxia-quarto template](https://github.com/InseeFrLab/onyxia-quarto) 
+-   [Romain Lesur](https://github.com/RLesur) for the [onyxia-quarto template](https://github.com/InseeFrLab/onyxia-quarto) 
 -   [Mickaël Canouil](https://github.com/mcanouil/) for maintaining the [awesome Quarto](https://github.com/mcanouil/awesome-quarto)
+-   [Emi Tanaka](https://github.com/emitanaka) for her [syntax-highlthing CSS](https://github.com/emitanaka/talks/blob/master/Ihaka2022/assets/syntax-highlight.css)
 
 ## License
 
