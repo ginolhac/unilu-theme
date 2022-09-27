@@ -85,6 +85,10 @@ $presentation-font-size-root: 40px !default;
   padding-left: 0.5em;
 }
 
+.reveal .progress {
+  height: 6px;
+}
+
 .reveal .slide a {
   text-decoration: underline;
   text-decoration-color: $orange;
