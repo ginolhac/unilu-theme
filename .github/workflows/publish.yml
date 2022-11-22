@@ -31,11 +31,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v1
       - name: Render Website
-        run: quarto render
+        run: quarto render template.qmd -o index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: '_site'
+          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@main
