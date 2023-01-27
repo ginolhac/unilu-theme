@@ -6,7 +6,8 @@ date-format: "dddd, [the] D[<sup style='font-size:65%;font-style:italic;'>th</su
 institute: Rworkshop
 author: "Aurélien Ginolhac"
 format:
-  unilu-theme-revealjs
+  unilu-theme-revealjs:
+    output-file: index.html
 from: markdown+emoji
 title-slide-attributes: 
   data-background-image: https://tidyverse.tidyverse.org/logo.png
