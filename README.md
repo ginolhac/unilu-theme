@@ -1,5 +1,8 @@
 # Quarto reveal.js uni.lu template
 
+
+![Build](https://github.com/ginolhac/unilu-theme/actions/workflows/publish.yml/badge.svg)
+
 A [Quarto](https://quarto.org) extension for authoring [r-training](https://gitlab.lcsb.uni.lu/r-training) Reveal.js presentations at [University of Luxembourg](https://wwwen.uni.lu/)
 
 ## Installation
