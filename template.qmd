@@ -5,6 +5,7 @@ date: today
 date-format: "dddd, [the] D[<sup style='font-size:65%;font-style:italic;'>th</sup>] [of] MMMM, YYYY"
 institute: Rworkshop
 author: "Aurélien Ginolhac"
+logo_url: "https://github.com/ginolhac/unilu-theme"
 format:
   unilu-theme-revealjs:
     output-file: index.html
@@ -40,6 +41,14 @@ execute:
 1 + 3
 mean(c(1, 3, 6))
 ```
+
+## Click logo
+
+Following discussion on [quarto-cli](https://github.com/quarto-dev/quarto-cli/discussions/3082#discussioncomment-7058099), logo on each slide can point to the desired URL.
+
+Set it in the YAML header with `logo_url: "https://fasterthanli.me"`
+
+If not set, it points to https://quarto.org
 
 ## Practical {background="#e4f0ff"}
 

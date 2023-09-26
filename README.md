@@ -19,6 +19,15 @@ quarto use template ginolhac/unilu-theme
 quarto install extension ginolhac/unilu-theme
 ```
 
+## Logo clickable
+
+Following discussion on [quarto-cli](https://github.com/quarto-dev/quarto-cli/discussions/3082#discussioncomment-7058099), logo on each slide can point to the desired URL.
+
+Set it in the YAML header with `logo_url: "https://fasterthanli.me"`
+
+If not set, it points to https://quarto.org
+
+
 ## Output
 
 ![template preview](template.png)
