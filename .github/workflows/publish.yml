@@ -25,9 +25,7 @@ jobs:
       - uses: r-lib/actions/setup-renv@v2
 
       - name: Render Quarto file
-        uses: quarto-dev/quarto-actions/publish@v2
+      - uses: quarto-dev/quarto-actions/publish@v2
         with:
           path: template.qmd
           target: gh-pages
-        #env:
-          #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
