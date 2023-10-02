@@ -24,6 +24,10 @@ code span.at {
   color: #83bcff;
 }
 
+code span.bu {
+  color: #17bbf2;
+}
+
 code span.ot {
   color: #007BA5;
 }
@@ -94,6 +98,10 @@ code span.ch {
   color: #20794D;
 }
 
+code span.ex {
+  color: #4078f2;
+}
+
 code span.dt {
   color: #AD0000;
 }
@@ -103,11 +111,11 @@ code span.fl {
 }
 
 code span.co {
-  color: #5E5E5E;
+  color: #9B9B9B;
 }
 
 code span.cv {
-  color: #5E5E5E;
+  color: #9B9B9B;
   font-style: italic;
 }
 
