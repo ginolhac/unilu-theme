@@ -3,7 +3,7 @@ title: "Data science with R"
 subtitle: "Using the tidyverse and Quarto"
 date: today
 date-format: "dddd, [the] D[<sup style='font-size:65%;font-style:italic;'>th</sup>] [of] MMMM, YYYY"
-institute: Rworkshop
+institute: UniLu
 author: "Aurélien Ginolhac"
 logo_url: "https://github.com/ginolhac/unilu-theme"
 format:
