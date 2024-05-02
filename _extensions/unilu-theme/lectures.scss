@@ -94,6 +94,10 @@ $presentation-font-size-root: 40px !default;
   text-decoration-color: $orange;
 }
 
+.reveal code {
+  color: #5d1ea8;
+}
+
 .red {
   color: #cc0000;
 }
@@ -106,6 +110,13 @@ $presentation-font-size-root: 40px !default;
   color: #FFD801;
 }
 
+.blue {
+  color: #00a4e1;
+}
+
+.small {
+  font-size: 0.7em;
+}
 
 .large {
   font-size: 1.2em;
@@ -129,6 +140,14 @@ blockquote {
   font-style: normal;
   font-size: 95%;
 } */
+
+/* https://github.com/quarto-dev/quarto-cli/discussions/7356#discussioncomment-7396306 */
+/* Christophe Dervieux */
+.table-striped {
+  > tbody > tr:nth-of-type(odd) > * {
+    background-color: #f2f2f2;
+  }
+}
 
 .thanks {
 	padding: 20px 0; /* top and bottom padding */
