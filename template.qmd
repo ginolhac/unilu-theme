@@ -113,11 +113,13 @@ Slide up while fading in
 ::: {.panel-tabset}
 
 ## yaml
+
 ```
 ---
 format: test
 ---
 ```
+
 ## Or nothing
 
 :::
@@ -144,6 +146,19 @@ Big Text
 :::
 
 More in the official [Quarto Presentation demo](https://quarto.org/docs/presentations/revealjs/demo/#/title-slide) and available [code](https://github.com/quarto-dev/quarto-web/blob/main/docs/presentations/revealjs/demo/index.qmd)
+
+## Blockquote
+
+::: {.huge}
+>**Literate programming** is the practice of [mixing]{.green} code and descriptive writing in order to execute and explain a [data analysis]{.green} **simultaneously in the same document**.
+
+
+— _William Landau_
+:::
+
+::: {.footer}
+Source: [`{targets}` user manual](https://books.ropensci.org/targets/literate-programming.html)
+:::
 
 
 ## Layout for chunks too

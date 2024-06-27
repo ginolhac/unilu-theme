@@ -85,8 +85,19 @@ $presentation-font-size-root: 40px !default;
 }
 
 .reveal .slide blockquote {
-  border-left: 3px solid $text-muted;
+  border-left: 9px solid $link-color;
   padding-left: 0.5em;
+}
+
+.reveal .slide blockquote:before {
+    display: block;
+    font-size: 300%;
+    color: $link-color;
+    content: "\201C";
+    margin-left: -0.1em;
+    margin-bottom: -200px;
+    position:relative;
+    top:-30px;
 }
 
 .reveal .slide a {
