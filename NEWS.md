@@ -1,7 +1,12 @@
 
+## Version 1.1.2
+
+- grey background for code output
+
+
 ## Version 1.1.1
 
-- lighter syntax highlighthing
+- lighter syntax highlighting
 
 ## Version 1.1.0
 
