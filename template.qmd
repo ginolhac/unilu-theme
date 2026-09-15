@@ -5,17 +5,14 @@ date: today
 date-format: "dddd, D MMMM YYYY"
 institute: "Université du Luxembourg"
 author: "Aurélien Ginolhac, Roland Krause"
-logo_url: "https://github.com/ginolhac/unilu-theme"
+logo_url: "https://github.com/rolandkrause/unilu-theme"
 format:
   unilu-theme-revealjs:
     output-file: index.html
 from: markdown+emoji
-title-slide-attributes: 
+title-slide-attributes:
   data-background-image: https://tidyverse.tidyverse.org/logo.png
-  data-background-position: "50% 10%"
-  data-background-size: "100px"
-  data-background-color: "#142F3F" # required for title background
-execute: 
+execute:
   echo: true
 ---
 
@@ -28,9 +25,7 @@ This presentation demonstrates typical use of the `unilu-theme` Quarto template 
 
 Not all elements of the templates of the Powerpoint slide deck are implemented. 
 
-Notably, 
-- the two-tone section slides proved hard to get right.
-- the title slide is a lot more modest
+
 
 :::
 ::: {.column width="50%"}
@@ -40,6 +35,13 @@ Font sizes are relatively small to place code and data on the same slide.
 :::
 ::::
 
+## Remarks
+
+Current version
+
+- the two-tone section slides proved hard to get right.
+
+- the title slide logo sits in a circular badge to the left of the title; set only `data-background-image` in `title-slide-attributes` — position and size are fixed by the theme itself, so per-slide `data-background-position`/`data-background-size` are ignored.
 
 # Standard layouts {.chapter}
 Typical layout situations

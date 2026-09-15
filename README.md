@@ -1,7 +1,7 @@
 # Quarto reveal.js uni.lu template
 
 
-![Build](https://github.com/ginolhac/unilu-theme/actions/workflows/publish.yml/badge.svg)
+![Build](https://github.com/rolandkrause/unilu-theme/actions/workflows/publish.yml/badge.svg)
 
 A [Quarto](https://quarto.org) extension for authoring [r-training](https://gitlab.lcsb.uni.lu/r-training) Reveal.js presentations at [University of Luxembourg](https://wwwen.uni.lu/)
 
@@ -10,14 +10,25 @@ A [Quarto](https://quarto.org) extension for authoring [r-training](https://gitl
 - To start a new presentation in a new folder:
 
 ``` bash
-quarto use template ginolhac/unilu-theme
+quarto use template rolandkrause/unilu-theme
 ```
 
 - To install the theme in an existing folder:
 
 ``` bash
-quarto install extension ginolhac/unilu-theme
+quarto install extension rolandkrause/unilu-theme
 ```
+
+## Title slide logo
+
+Each deck's own logo sits in a circular badge to the left of the title. Set only `data-background-image` in `title-slide-attributes`:
+
+``` yaml
+title-slide-attributes:
+  data-background-image: https://tidyverse.tidyverse.org/logo.png
+```
+
+Position and size are fixed by the theme itself (`$title-logo-x`/`$title-logo-y`/`$title-logo-size` in `lectures.scss`), so a per-document `data-background-position` or `data-background-size` has no effect.
 
 ## Linked logo
 
@@ -32,7 +43,7 @@ If not set, it points to https://quarto.org
 
 ![template preview](template.png)
 
-Preview this [Quarto reveal.js theme](https://ginolhac.github.io/unilu-theme) on `gh-pages`.
+Preview this [Quarto reveal.js theme](https://rolandkrause.github.io/unilu-theme) on `gh-pages`.
 
 ## Acknowledgements
 

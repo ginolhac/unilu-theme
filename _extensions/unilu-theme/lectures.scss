@@ -68,8 +68,75 @@ $font-family-monospace: "Fira Mono", "Liberation Mono", monospace  !default;
 
 
 #title-slide {
-  background-color: $uni-background;
+  background-color: transparent;
   color: white;
+}
+
+.reveal .backgrounds .slide-background.quarto-title-block {
+  background-color: $uni-background !important;
+}
+
+/* Topic logo badge — each deck sets its logo via title-slide-attributes:
+     data-background-image: <logo url>
+     data-background-position: "9% 44%"
+     data-background-size: "90px"
+   This draws a matching faint-red circle behind it (same position formula reveal
+   uses for data-background-position/-size, so it always lines up with the logo). */
+$title-logo-size: 90px;
+$title-logo-x: 0.09;
+$title-logo-y: 0.44;
+$title-badge-size: 120px;
+$title-badge-offset: ($title-logo-size - $title-badge-size) / 2;
+
+/* Fixes the logo's position/size on every deck's title slide so individual
+   .qmd files only need to set data-background-image. Quarto does not merge
+   title-slide-attributes between a shared _metadata.yml and a per-doc value —
+   any key the doc also sets replaces the whole map — so this can't live in
+   YAML; !important overrides reveal.js's inline style either way. */
+.reveal .backgrounds .slide-background.quarto-title-block .slide-background-content {
+  background-position: percentage($title-logo-x) percentage($title-logo-y) !important;
+  background-size: $title-logo-size !important;
+}
+
+/* uni.lu logo margin at top of the white stripe — kept equal above and below
+   the logo, so the stripe's bottom edge sits one margin below the logo.
+   Reveal positions .slide-logo with a built-in ~12px inset from `top: 0`,
+   measured empirically; subtract it so the requested margin is the real one. */
+$title-unilogo-margin: 20px;
+$title-unilogo-height: 60px;
+$title-unilogo-baseline-inset: 12px;
+$title-stripe-height: $title-unilogo-margin * 2 + $title-unilogo-height;
+
+.reveal:has(section#title-slide.present) .slide-logo {
+  top: $title-unilogo-margin - $title-unilogo-baseline-inset;
+}
+
+.reveal .backgrounds .slide-background.quarto-title-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $title-stripe-height;
+  background: white;
+  z-index: 0;
+}
+
+.reveal .backgrounds .slide-background.quarto-title-block::after {
+  content: '';
+  position: absolute;
+  left: calc((100% - #{$title-logo-size}) * #{$title-logo-x} + #{$title-badge-offset});
+  top: calc((100% - #{$title-logo-size}) * #{$title-logo-y} + #{$title-badge-offset});
+  width: $title-badge-size;
+  height: $title-badge-size;
+  border-radius: 50%;
+  background-color: $uni-red02;
+  z-index: 0;
+}
+
+.reveal .backgrounds .slide-background.quarto-title-block .slide-background-content {
+  position: relative;
+  z-index: 1;
 }
 
 #title-slide .title, #title-slide .subtitle {
@@ -259,7 +326,7 @@ pre code:not(.sourceCode) {
 .callout-important.callout-style-default {
    border-color: darken($uni-red, 10) !important;
    border-left-width: 5px !important;
-   ssbackground-color: $uni-red02 !important;
+   background-color: $uni-red02 !important;
 }
 
 .callout-important.callout-style-default .callout-title {
@@ -388,6 +455,35 @@ pre code:not(.sourceCode) {
 
 .reveal:has(section.chapter.present) .slide-logo {
   content: url('/_extensions/unilu-theme/uni-logo-white.png') !important;
+}
+
+/* extra spacing between .columns blocks — .column divs are inline-block with an
+   explicit percentage width (from `.column width="..."`), not flex/grid items,
+   so `gap` has no effect here. box-sizing: border-box keeps the padding inside
+   the declared width, so it can't push columns wider and cause wrapping. */
+.reveal .slides .columns > .column {
+  box-sizing: border-box;
+  padding: 0 1em;
+}
+
+.reveal .slides .columns > .column:first-child {
+  padding-left: 0;
+}
+
+.reveal .slides .columns > .column:last-child {
+  padding-right: 0;
+}
+
+/* contained image right */
+.img-right {float: right; display: block; margin-left: auto; }
+
+.callout { position: relative; }
+
+.corner-img {
+  position: absolute;
+  top: 2em;
+  right: 0.5em;
+  width: 100px;
 }
 
 /*
