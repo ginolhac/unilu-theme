@@ -9,3 +9,5 @@
 *.Rproj
 /uni-logo.png
 .positai
+
+/.luarc.json
