@@ -1,22 +1,26 @@
 # Quarto reveal.js uni.lu template
 
 
-![Build](https://github.com/rolandkrause/unilu-theme/actions/workflows/publish.yml/badge.svg)
+![Build](https://github.com/ginolhac/unilu-theme/actions/workflows/publish.yml/badge.svg)
 
-A [Quarto](https://quarto.org) extension for authoring [r-training](https://gitlab.lcsb.uni.lu/r-training) Reveal.js presentations at [University of Luxembourg](https://wwwen.uni.lu/)
+A [Quarto](https://quarto.org) extension for authoring [r-training](https://gitlab.com/uniluxembourg/lcsb/r-training) Reveal.js presentations at [University of Luxembourg](https://wwwen.uni.lu/)
+
+Fontawesome is used for icons in callout boxes.
 
 ## Installation
 
 - To start a new presentation in a new folder:
 
 ``` bash
-quarto use template rolandkrause/unilu-theme
+quarto use template ginolhac/unilu-theme
+quarto add quarto-ext/fontawesome --embed ginolhac/unilu-theme
 ```
 
 - To install the theme in an existing folder:
 
 ``` bash
-quarto install extension rolandkrause/unilu-theme
+quarto install extension ginolhac/unilu-theme
+quarto add quarto-ext/fontawesome --embed ginolhac/unilu-theme
 ```
 
 ## Title slide logo
@@ -44,6 +48,11 @@ If not set, it points to https://quarto.org
 ![template preview](template.png)
 
 Preview this [Quarto reveal.js theme](https://rolandkrause.github.io/unilu-theme) on `gh-pages`.
+
+## Styling and usage
+
+Ideas for the use of the slide styling is in the template.
+
 
 ## Acknowledgements
 
