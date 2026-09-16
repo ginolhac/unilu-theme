@@ -463,7 +463,7 @@ pre code:not(.sourceCode) {
    the declared width, so it can't push columns wider and cause wrapping. */
 .reveal .slides .columns > .column {
   box-sizing: border-box;
-  padding: 0 1em;
+  padding: 0 0.5em;
 }
 
 .reveal .slides .columns > .column:first-child {
