@@ -82,10 +82,10 @@ $font-family-monospace: "Fira Mono", "Liberation Mono", monospace  !default;
      data-background-size: "90px"
    This draws a matching faint-red circle behind it (same position formula reveal
    uses for data-background-position/-size, so it always lines up with the logo). */
-$title-logo-size: 90px;
+$title-logo-size: 270px;
 $title-logo-x: 0.09;
 $title-logo-y: 0.44;
-$title-badge-size: 120px;
+$title-badge-size: 320px;
 $title-badge-offset: ($title-logo-size - $title-badge-size) / 2;
 
 /* Fixes the logo's position/size on every deck's title slide so individual
@@ -125,9 +125,9 @@ $title-stripe-height: $title-unilogo-margin * 2 + $title-unilogo-height;
 .reveal .backgrounds .slide-background.quarto-title-block::after {
   content: '';
   position: absolute;
-  left: calc((100% - #{$title-logo-size}) * #{$title-logo-x} + #{$title-badge-offset});
+  left: calc((100% - #{$title-logo-size}) * #{$title-logo-x} + #{$title-badge-offset}); 
   top: calc((100% - #{$title-logo-size}) * #{$title-logo-y} + #{$title-badge-offset});
-  width: $title-badge-size;
+  width: $title-badge-size; 
   height: $title-badge-size;
   border-radius: 50%;
   background-color: $uni-red02;
@@ -463,7 +463,7 @@ pre code:not(.sourceCode) {
    the declared width, so it can't push columns wider and cause wrapping. */
 .reveal .slides .columns > .column {
   box-sizing: border-box;
-  padding: 0 0.5em;
+  padding: 0 0.3em;
 }
 
 .reveal .slides .columns > .column:first-child {
