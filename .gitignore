@@ -8,3 +8,8 @@
 /.Rprofile
 *.Rproj
 /uni-logo.png
+.positai
+/.luarc.json
+_extensions/quarto-ext/fontawesome/*
+/.quarto/
+**/*.quarto_ipynb

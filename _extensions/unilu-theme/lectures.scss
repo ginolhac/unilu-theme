@@ -1,55 +1,162 @@
 /*-- scss:defaults --*/
 
-// fonts, port code from xaringan
-@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i&display=swap);
-@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap);
-@import url(https://fonts.googleapis.com/css?family=Fira+Mono&display=swap);
+// fonts
+@import url(https://fonts.googleapis.com/css?family=Barlow:wght@200..900&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Lora&display=swap);
 
-$font-family-sans-serif: "Roboto Condensed", "Book Antiqua", Palatino,
+$font-family-sans-serif: "Barlow", "Book Antiqua", Palatino,
+  FreeSerif, sans-serif !default;
+
+$font-family-serif: "Lora", "Book Antiqua", Palatino,
   FreeSerif, serif !default;
 
+// standard colors
+$uni-primary: #1E3446;
+$uni-background: #142F3F;
+$uni-red: rgb(225, 60, 46); // #E13C2E; "red orange"
 
-// colors
+$uni-red07: #D6502D;
+$uni-red05: #EBB7A7;
+$uni-red03: #F2CFC3;
+$uni-red02: #F8E7E2;
+
+$uni-blue03: lighten($uni-primary, 0.3);
+$uni-blue07: lighten($uni-primary, 0.7);
+
+
+
+$fstm-grey: #A0C6D3;
+$fhse-orange: #FAC59E;
+$fdef-blue: #8CB5E2;
+$lcsb-blue: #AFDEF6;
+$law-blue: #7CCEF4;
+$liser-green: #D0DA90;
+$snt-purple: #C3C5E4;
+$cd2h-brown: #D3C1B7;
+
+
 $body-bg: #FFFFFF !default;
-$body-color: #000 !default;
-$link-color: #00A4E1 !default;
-$selection-bg: #26351c !default;
+$body-color: #000 !default; // text color
+$link-color: $uni-red !default;
+$selection-bg: $uni-background !default;
+
 // from https://github.com/InseeFrLab/onyxia-quarto
-$orange: rgb(255, 86, 44);
+$orange: darken($fhse-orange, 20);
 $black: rgb(44, 50, 63);
 $white: rgb(241, 240, 235);
-$green: rgb(186, 255, 41);
+$green: darken($liser-green, 20);
+
+$tip-color: #D0DA90;
+$imp-color: $uni-red;
+
 
 // headings
 $presentation-heading-font: $font-family-sans-serif  !default;
-$presentation-heading-color: #00A4E1 !default;
+$presentation-heading-color: $uni-background !default;
 $presentation-title-slide-text-align: center !default;
 
 // code
-//$code-color: #88398A !default;
-//$font-family-monospace: "Fira Mono", "Liberation Mono", monospace  !default;
-$presentation-font-size-root: 40px !default;
+$code-color: $uni-primary !default;
+$font-family-monospace: "Fira Mono", "Liberation Mono", monospace  !default;
+//$presentation-font-size-root: 40px !default;
 
 
 /*-- scss:rules --*/
 
 /* Title page custom */
 /* adapted from https://github.com/mcanouil/quarto-revealjs-storybook  */
+
+
+#title-slide {
+  background-color: transparent;
+  color: white;
+}
+
+.reveal .backgrounds .slide-background.quarto-title-block {
+  background-color: $uni-background !important;
+}
+
+/* Topic logo badge — each deck sets its logo via title-slide-attributes:
+     data-background-image: <logo url>
+     data-background-position: "9% 44%"
+     data-background-size: "90px"
+   This draws a matching faint-red circle behind it (same position formula reveal
+   uses for data-background-position/-size, so it always lines up with the logo). */
+$title-logo-size: 270px;
+$title-logo-x: 0.09;
+$title-logo-y: 0.44;
+$title-badge-size: 320px;
+$title-badge-offset: ($title-logo-size - $title-badge-size) / 2;
+
+/* Fixes the logo's position/size on every deck's title slide so individual
+   .qmd files only need to set data-background-image. Quarto does not merge
+   title-slide-attributes between a shared _metadata.yml and a per-doc value —
+   any key the doc also sets replaces the whole map — so this can't live in
+   YAML; !important overrides reveal.js's inline style either way. */
+.reveal .backgrounds .slide-background.quarto-title-block .slide-background-content {
+  background-position: percentage($title-logo-x) percentage($title-logo-y) !important;
+  background-size: $title-logo-size !important;
+}
+
+/* uni.lu logo margin at top of the white stripe — kept equal above and below
+   the logo, so the stripe's bottom edge sits one margin below the logo.
+   Reveal positions .slide-logo with a built-in ~12px inset from `top: 0`,
+   measured empirically; subtract it so the requested margin is the real one. */
+$title-unilogo-margin: 20px;
+$title-unilogo-height: 60px;
+$title-unilogo-baseline-inset: 12px;
+$title-stripe-height: $title-unilogo-margin * 2 + $title-unilogo-height;
+
+.reveal:has(section#title-slide.present) .slide-logo {
+  top: $title-unilogo-margin - $title-unilogo-baseline-inset;
+}
+
+.reveal .backgrounds .slide-background.quarto-title-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $title-stripe-height;
+  background: white;
+  z-index: 0;
+}
+
+.reveal .backgrounds .slide-background.quarto-title-block::after {
+  content: '';
+  position: absolute;
+  left: calc((100% - #{$title-logo-size}) * #{$title-logo-x} + #{$title-badge-offset}); 
+  top: calc((100% - #{$title-logo-size}) * #{$title-logo-y} + #{$title-badge-offset});
+  width: $title-badge-size; 
+  height: $title-badge-size;
+  border-radius: 50%;
+  background-color: $uni-red02;
+  z-index: 0;
+}
+
+.reveal .backgrounds .slide-background.quarto-title-block .slide-background-content {
+  position: relative;
+  z-index: 1;
+}
+
 #title-slide .title, #title-slide .subtitle {
   opacity: 0.80;
   margin-top: 0px;
   margin-bottom: 0px;
+  color: $uni-red;
+  font-weight: 700;
 }
 
 #title-slide .title {
-  color: #515151;
-  font-weight: bold;
+  font: $font-family-sans-serif;
+  color: $uni-red;
+  font-weight: 900;
   margin-top: -20px;
   margin-bottom: 5px;
 }
 
 #title-slide .subtitle {
-  color: $presentation-heading-color;
+  color: white;
   font-weight: bold;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -58,6 +165,7 @@ $presentation-font-size-root: 40px !default;
 
 #title-slide .institute, #title-slide .author, #title-slide .date {
   opacity: 0.50;
+  color: white;
   margin-top: 0px;
   margin-bottom: 0px;
   font-weight: 400;
@@ -77,12 +185,12 @@ $presentation-font-size-root: 40px !default;
 }
 
 .reveal .progress {
-  height: 6px;
+  background-color: $uni-background;
+  color: $uni-red;
+  height: 3px;
+  
 }
 
-.reveal .slide-practical {
-  background-color: #e4f0ff;
-}
 
 .reveal .slide blockquote {
   border-left: 9px solid $link-color;
@@ -102,27 +210,27 @@ $presentation-font-size-root: 40px !default;
 
 .reveal .slide a {
   text-decoration: underline;
-  text-decoration-color: $orange;
+  text-decoration-color: $link-color;
 }
 
-.reveal code {
-  color: #5d1ea8;
+.reveal .highlight{
+  background-color: $uni-red02;
 }
 
 .red {
-  color: #cc0000;
+  color: $uni-red;
 }
 
 .green {
-  color: #228C22;
+  color: $green;
 }
 
 .yellow {
-  color: #FFD801;
+  color: #FAC59E;
 }
 
 .blue {
-  color: #00a4e1;
+  color: $lcsb-blue;
 }
 
 .small {
@@ -161,7 +269,471 @@ pre code:not(.sourceCode) {
   padding-right: 15px;
 	color:#fff;
 	font-size: 56px;
-	display: inline;
+//	display: inline;
 	border-radius: 15px;
-	background-color: #4582ec;
+	background-color: $link-color;
+}
+
+// Callouts
+
+
+
+.callout.callout-style-default .callout-body {
+  background-color: white;
+}
+
+.no-icon .callout-title strong{
+  color: white;
+  
+}
+
+// Tip
+.callout-tip.callout-style-default {
+
+   border-color: lighten($uni-primary, 10%) !important;
+   
+}
+.callout-tip.callout-style-default .callout-title {
+   background-color: lighten($uni-primary, 70%) !important;
+}
+
+.callout-tip.no-icon .callout-title {
+   background-color: lighten($uni-primary, 30) !important;
+   color: white !important;
+}
+
+
+// Note;
+
+.callout-note.callout-style-default {
+   border-color: $uni-background !important;
+}
+
+.callout-note.callout-style-default .callout-title {
+   background-color: lighten($uni-background, 70) !important;
+}
+.callout-note.no-icon .callout-title {
+   background-color: $uni-background !important;
+   color: white !important;
+}
+
+// Important
+
+.callout-important.callout-style-default .callout-body{
+   border-color: $uni-red02 !important;
+}
+
+.callout-important.callout-style-default {
+   border-color: darken($uni-red, 10) !important;
+   border-left-width: 5px !important;
+   background-color: $uni-red02 !important;
+}
+
+.callout-important.callout-style-default .callout-title {
+   background-color: rgba($uni-red, 0.3) !important;
+   color: lighten($uni-red, 30) !important;
+}
+
+.callout-important.no-icon .callout-title {
+   background-color: $uni-red !important;
+   color: lighten($uni-red, 30) !important;
+}
+
+
+// caution 
+
+.callout-caution.callout-style-default {
+   border-color: $uni-red07 !important;
+   border-left-width: 5px !important;
+}
+
+.callout-caution.callout-style-default .callout-title {
+   background-color: $uni-red05 !important;
+}
+
+.callout-caution.no-icon .callout-title {
+   background-color: $uni-red07 !important;
+}
+
+// warning
+
+.callout-warning.callout-style-default {
+  border-color: $uni-red05 !important;
+  border-left-width: 5px !important;
+  background-color: lighten($uni-red, 70) !important;
+}
+
+.callout-warning.callout-style-default .callout-title {
+   background-color: $uni-red02 !important;
+}
+
+.callout-warning.no-icon .callout-title {
+   background-color: $uni-red05 !important;
+}
+
+// Standard slides (modify level 2 header)
+
+.reveal .chapter {
+  background-color: $uni-background !important;
+  color: $uni-red !important;
+  z-index: -900;
+}
+
+.reveal .chapter h1, 
+.reveal .chapter p,
+.reveal .chapter h2,
+.reveal .chapter h3,
+.reveal .chapter h4,
+.reveal .chapter h5,
+.reveal .chapter h6{
+    margin-left:200px !important;
+    font-weight: 800;
+
+}
+
+
+
+/* Top rectangle for background - no practical consequence, for development */
+.reveal .slides section.chapter::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 1600px;
+  height: 450px;
+  background-color: $uni-background;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Circle for chapter slide */
+.reveal .slides section.chapter::after {
+  content: '';
+  position: fixed;
+  top: 200px;
+  left: -330px;
+  height: 500px;
+  width: 500px;
+
+  border-radius: 50%;
+  background-color: $uni-red;
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+/* Circle for slide title */
+.reveal .slides h2::before {
+  content: '';
+  position: fixed;
+  top: 20px;
+  left: -115px;
+  height: 50px;
+  width: 50px;
+
+  border-radius: 50%;
+  background-color: $uni-red;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.slide-number, .reveal.has-logo .slide-number {
+  color: $uni-red;
+  position: absolute !important;
+  bottom: 12px !important;
+  right: 10px;
+  top: unset !important;
+}
+
+.reveal .slide-logo {
+  max-height: 60px !important;
+  width: auto;
+  position: absolute !important;
+  top: 0px;
+  right: 10px;
+}
+
+.reveal:has(section.chapter.present) .slide-logo {
+  content: url('/_extensions/unilu-theme/uni-logo-white.png') !important;
+}
+
+/* extra spacing between .columns blocks — .column divs are inline-block with an
+   explicit percentage width (from `.column width="..."`), not flex/grid items,
+   so `gap` has no effect here. box-sizing: border-box keeps the padding inside
+   the declared width, so it can't push columns wider and cause wrapping. */
+.reveal .slides .columns > .column {
+  box-sizing: border-box;
+  padding: 0 0.3em;
+}
+
+.reveal .slides .columns > .column:first-child {
+  padding-left: 0;
+}
+
+.reveal .slides .columns > .column:last-child {
+  padding-right: 0;
+}
+
+/* contained image right */
+.img-right {float: right; display: block; margin-left: auto; }
+
+.callout { position: relative; }
+
+.corner-img {
+  position: absolute;
+  top: 2em;
+  right: 0.5em;
+  width: 100px;
+}
+
+/*
+
+.reveal section.level1 .slide-logo {
+  display: none !important;
+} */
+
+/* Or show a different logo */
+.reveal .chapter.h1 .slide-logo {
+  content: url('/_extensions/unilu-theme/uni-logo-white.png') !important;
+}
+
+/*.reveal .slides section.overview {
+  background-image: none !important;
+}
+
+.reveal .slides section.chapter {
+  background-color: darken($fhse-orange, 20) !important;
+  background-image: url('/_extensions/unilu-theme/uni-logo-white.png');
+  background-size: 150px;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+/*
+.reveal .slides .overview {
+  background-color: $uni-background;
+  background-image: url('/_extensions/unilu-theme/uni-logo-white.png');
+  background-size: 150px;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+
+ .reveal .section{
+  background-color: $uni-background !important;
+  background-image: url('/_extensions/unilu-theme/uni-logo-white.png') !important;
+  background-size: 150px;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+
+}
+
+.reveal .slides .overview h1 {
+  background-image: none !important;
+  color: white;
+}
+*/
+
+.reveal .slide-practical {
+   background-color: $uni-red02 !important;
+}
+
+// syntax hightlighting
+
+pre {
+  background-color: #b9ca4a !important;
+  font-size: 12pt;
+}
+
+.reveal pre.sourceCode.python code{
+  background-color:  darken($uni-red, 35) !important;
+}
+
+.cell-output pre code{
+  background-color: #ccc !important; //  #D6E6E3
+  color: black;
+  margin-top: 1px;
+  border-width: none;
+} 
+
+
+// tables
+.cell-output table {
+  font-size: 0.7em !important;
+
+}
+
+td {
+ font-size: 0.7em; 
+}
+
+
+
+.reveal code {
+ color: darken($uni-red, 10) ; // code in standard text
+}
+
+
+
+code.sourceCode > span {
+  color: #ddd !important;
+}
+
+
+div.sourceCode {
+  background-color: $uni-background; //#00558b;
+  color: white; 
+  font-family: monospace;
+}
+
+.reveal pre.sourceCode code {
+  background-color: $uni-background !important; //#00558b;
+  color: white;
+}
+
+code span.at {
+  color: $fdef-blue;
+}
+
+code span.bu {
+  color: #62d5ff;
+}
+
+code span.ot {
+  color: #A6F388; /* yellow #007BA5;*/
+}
+
+code span.im {
+  color: #D47DB3; /*#007BA5;*/
+}
+
+code span.ss {
+  color: #20794D;
+}
+
+code span.an {
+  color: #5E5E5E;
+}
+
+code span.fu {
+  color: white; /*#dc91ff;*/
+}
+
+code span.st {
+  color: #b9ca4a;
+}
+
+code span.cf {
+  color: yellow; /*#007BA5; */
+}
+
+code span.op {
+  color: goldenrod;
+/*  color: white; */
+}
+
+code span.er {
+    color: white/* #AD0000 */;
+}
+
+code span.bn {
+  color: white/* #AD0000 */;
+}
+
+code span.al {
+  color: white/* #AD0000 */;
+
+}
+
+code span.va {
+  color: #FFB300;
+}
+
+code span.pp {
+    color: white/* #AD0000 */;
+
+}
+
+code span.in {
+  color: yellow; /*#5E5E5E; */
+}
+
+code span.vs {
+  color: #20794D;
+}
+
+code span.wa {
+  color: #5E5E5E;
+  font-style: italic;
+}
+
+code span.do {
+  color: #62d5ff; /* #5E5E5E; */
+  font-style: italic;
+}
+
+code span.ch {
+  color: #20794D;
+}
+
+code span.ex {
+  color: #4078f2;
+}
+
+code span.dt {
+    color: white/* #AD0000 */;
+}
+
+code span.fl {
+    color: white/* #AD0000 */;
+}
+
+code span.co {
+  color: lightgrey;
+}
+
+code span.cv {
+  color: #9B9B9B;
+  font-style: italic;
+}
+
+code span.cn {
+  color: #ff9d00
+}
+
+code span.sc {
+  color: orange;
+}
+
+code span.dv {
+  /*color: #d54e53;*/
+  color: white;
+}
+
+code span.kw {
+  color: orange;
+}
+
+.pandas-blue {
+  background: #150458;
+  color: white !important;
+}
+
+.pandas-blue-hide {
+  background: #150458;
+  color: #150458;
+  
+}
+
+.pandas-blue h3{
+  color: white !important;
+}
+
+h1.pandas-blue {
+  color: white !important;
+}
+
+
+
+.str_view ul {
+  font-size:28pt !important;
+
 }
