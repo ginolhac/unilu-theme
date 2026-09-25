@@ -1,3 +1,7 @@
+## Unreleased
+
+- Added a `.grid-row` utility class: each child of the div is one grid cell, for comparison tables (e.g. task | base R | tidyverse | comment) without nested `.column` divs. Column widths are set with the `--grid-cols` custom property, defaulting to equal-width columns.
+
 
 ## Version 2.0.0
 

@@ -456,6 +456,65 @@ print("We don't write for loops")
 :::
 ::::
 
+## Grid rows {.smaller}
+
+`{.grid-row}` lays out each child as one cell, no nested `.column` divs needed.
+
+::: {.grid-row style="--grid-cols: 25% 30% 30% 15%"}
+#### Task
+#### base R
+#### tidyverse
+#### Comment
+:::
+
+::: {.grid-row style="--grid-cols: 25% 30% 30% 15%"}
+Keep rows
+
+```{.r}
+penguins[penguins$year == 2008, ]
+```
+
+```{.r}
+penguins |>
+  filter(year == 2008)
+```
+
+No `$` needed
+:::
+
+::: {.grid-row style="--grid-cols: 25% 30% 30% 15%"}
+Pick columns
+
+```{.r}
+penguins[, c("species", "island")]
+```
+
+```{.r}
+penguins |>
+  select(species, island)
+```
+
+Unquoted names
+:::
+
+::: {.grid-row style="--grid-cols: 25% 30% 30% 15%"}
+Sort rows
+
+```{.r}
+penguins[order(penguins$bill_len), ]
+```
+
+```{.r}
+penguins |>
+  arrange(bill_len)
+```
+
+`desc()` to reverse
+:::
+
+Set the widths once for a whole deck in a local SCSS file instead:
+`.grid-row { --grid-cols: 25% 30% 30% 15%; }`
+
 ## Snippets
 
 Creating and editing slides can be much enhanced by using code snippets
