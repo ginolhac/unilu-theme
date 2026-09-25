@@ -543,3 +543,5 @@ More research is needed.
 Thank you for your attention!
 :::
 ::::
+
+{{< include _build_info_slide.qmd >}}

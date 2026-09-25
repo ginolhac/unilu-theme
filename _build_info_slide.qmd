@@ -1,0 +1,53 @@
+## {{< fa code-branch >}} Build information {.smaller}
+
+```{r build-info-setup, echo=FALSE}
+# Included as a deck's last slide via Quarto's include shortcode.
+# CI_COMMIT_REF_NAME (GitLab CI, detached HEAD) or GITHUB_REF_NAME
+# (GitHub Actions) names the branch in CI; falls back to the local git
+# checkout when rendering on a laptop.
+get_build_info <- function(stale_days = 30) {
+  git <- function(...) tryCatch(
+    system2("git", c(...), stdout = TRUE, stderr = FALSE),
+    error = function(e) character(0)
+  )
+
+  branch <- Sys.getenv("CI_COMMIT_REF_NAME", unset = Sys.getenv("GITHUB_REF_NAME", unset = NA))
+  if (is.na(branch) || !nzchar(branch)) branch <- git("rev-parse", "--abbrev-ref", "HEAD")
+  branch <- if (length(branch) == 0 || !nzchar(branch[1])) "unknown" else branch[1]
+
+  sha <- git("rev-parse", "--short", "HEAD")
+  sha <- if (length(sha) == 0) "unknown" else sha[1]
+
+  dirty <- length(git("status", "--porcelain")) > 0
+
+  last_commit_ts <- suppressWarnings(as.numeric(git("log", "-1", "--format=%ct")))
+  last_commit_date <- if (length(last_commit_ts) == 0 || is.na(last_commit_ts[1])) {
+    NA
+  } else {
+    as.POSIXct(last_commit_ts[1], origin = "1970-01-01")
+  }
+  age_days <- if (inherits(last_commit_date, "POSIXct")) {
+    as.numeric(difftime(Sys.time(), last_commit_date, units = "days"))
+  } else {
+    NA_real_
+  }
+
+  # "stale" = not the main branch, or main hasn't moved in a while
+  is_stale <- branch != "main" || (!is.na(age_days) && age_days > stale_days)
+
+  list(branch = branch, sha = sha, dirty = dirty,
+       last_commit_date = last_commit_date, age_days = age_days, is_stale = is_stale)
+}
+```
+
+```{r build-info-oneline, echo=FALSE, results='asis'}
+info <- get_build_info()
+status <- if (info$is_stale) "⚠️ stale" else "current"
+
+cat(glue::glue(
+  "Branch `{info$branch}` ({status}) &middot; ",
+  "Commit `{info$sha}`{if (info$dirty) ' (dirty)' else ''} &middot; ",
+  "Built {format(Sys.time(), '%Y-%m-%d %H:%M %Z')} &middot; ",
+  "{Sys.info()[['sysname']]}"
+))
+```
