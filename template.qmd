@@ -5,7 +5,7 @@ date: today
 date-format: "dddd, D MMMM YYYY"
 institute: "Université du Luxembourg"
 author: "Aurélien Ginolhac, Roland Krause"
-logo_url: "https://github.com/rolandkrause/unilu-theme"
+logo_url: "https://github.com/ginolhac/unilu-theme"
 format:
   unilu-theme-revealjs:
     output-file: index.html
