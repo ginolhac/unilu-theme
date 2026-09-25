@@ -101,7 +101,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="template_files/libs/revealjs/dist/theme/quarto-ddda14a79b4b2d371695e2c907a5bf5c.css">
+  <link rel="stylesheet" href="template_files/libs/revealjs/dist/theme/quarto-f88c6e69fc44f3ae34b8e28e12bbcb00.css">
   <link href="template_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="template_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="template_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -200,7 +200,7 @@
 <script type="text/javascript">
         window.addEventListener('load', function() {
           var logo = document.querySelector('.slide-logo');
-          var url = "https://github.com/rolandkrause/unilu-theme";
+          var url = "https://github.com/ginolhac/unilu-theme";
           logo.addEventListener('click', function() {
             window.open(url, '_blank');
           });
@@ -224,7 +224,7 @@ Aurélien Ginolhac, Roland Krause
     </div>
 </div>
 
-  <p class="date">Wednesday, 16 September 2026</p>
+  <p class="date">Friday, 25 September 2026</p>
 </section>
 <section id="content" class="slide level2">
 <h2>Content</h2>
@@ -744,6 +744,38 @@ Porrentruy      90.57             26.6</code></pre>
 </div>
 </div></div>
 </section>
+<section id="grid-rows" class="slide level2 smaller">
+<h2>Grid rows</h2>
+<p><code>{.grid-row}</code> lays out each child as one cell, no nested <code>.column</code> divs needed.</p>
+<div class="grid-row" style="--grid-cols: 25% 30% 30% 15%">
+<h4 id="task">Task</h4>
+<h4 id="base-r">base R</h4>
+<h4 id="tidyverse">tidyverse</h4>
+<h4 id="comment">Comment</h4>
+</div>
+<div class="grid-row" style="--grid-cols: 25% 30% 30% 15%">
+<p>Keep rows</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="" aria-label="1"></a>penguins[penguins<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2008</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="" aria-label="1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="" aria-label="2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2008</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>No <code>$</code> needed</p>
+</div>
+<div class="grid-row" style="--grid-cols: 25% 30% 30% 15%">
+<p>Pick columns</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="" aria-label="1"></a>penguins[, <span class="fu">c</span>(<span class="st">"species"</span>, <span class="st">"island"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="" aria-label="1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="" aria-label="2"></a>  <span class="fu">select</span>(species, island)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Unquoted names</p>
+</div>
+<div class="grid-row" style="--grid-cols: 25% 30% 30% 15%">
+<p>Sort rows</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="" aria-label="1"></a>penguins[<span class="fu">order</span>(penguins<span class="sc">$</span>bill_len), ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="" aria-label="1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="" aria-label="2"></a>  <span class="fu">arrange</span>(bill_len)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>desc()</code> to reverse</p>
+</div>
+<p>Set the widths once for a whole deck in a local SCSS file instead: <code>.grid-row { --grid-cols: 25% 30% 30% 15%; }</code></p>
+</section>
 <section id="snippets" class="slide level2">
 <h2>Snippets</h2>
 <p>Creating and editing slides can be much enhanced by using code snippets for column (standard layout).</p>
@@ -766,6 +798,10 @@ Porrentruy      90.57             26.6</code></pre>
 </div><div class="column thanks" style="width:50%;">
 <p>Thank you for your attention!</p>
 </div></div>
+</section>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636f64652d6272616e6368203e7d7d-build-information" class="slide level2 smaller">
+<h2>{{&lt; fa code-branch &gt;}} Build information</h2>
+<p>Branch <code>main</code> (current) · Commit <code>0902049</code> (dirty) · Built 2026-09-25 13:08 UTC · Linux</p>
 
 </section></section>
 
