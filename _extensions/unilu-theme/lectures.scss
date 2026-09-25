@@ -474,6 +474,27 @@ pre code:not(.sourceCode) {
   padding-right: 0;
 }
 
+/* .grid-row: one row of a comparison table (e.g. label | R | Python | comment)
+   without nested .column divs. Each child element is one cell. Column widths
+   come from --grid-cols, set per row or once for a deck:
+     .grid-row { --grid-cols: 30% 20% 20% 30%; }
+   Default: equal-width columns, as many as there are children. */
+.reveal .slides .grid-row {
+  display: grid;
+  grid-template-columns: var(--grid-cols, none);
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  column-gap: 1em;
+  align-items: start;
+  margin-bottom: 0.3em;
+}
+
+/* the default paragraph margin makes row heights inconsistent
+   whenever a cell's code block is shorter than the label's margin box */
+.reveal .slides .grid-row p {
+  margin: 0;
+}
+
 /* contained image right */
 .img-right {float: right; display: block; margin-left: auto; }
 
