@@ -1,8 +1,12 @@
 <!-- from https://github.com/quarto-dev/quarto-cli/discussions/3082#discussioncomment-6730539 
   code by Mickaël Canouil -->
+<img id="unilu-chapter-logo" src="WHITE_LOGO_SRC" alt="" hidden>
 <script type="text/javascript">
         window.addEventListener('load', function() {
           var logo = document.querySelector('.slide-logo');
+          if (!logo) return;
+          var chapterLogo = document.getElementById('unilu-chapter-logo');
+          logo.style.setProperty('--unilu-chapter-logo', 'url("' + chapterLogo.src + '")');
           var url = "XXX";
           logo.addEventListener('click', function() {
             window.open(url, '_blank');

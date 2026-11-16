@@ -34,6 +34,17 @@ title-slide-attributes:
 
 Position and size are fixed by the theme itself (`$title-logo-x`/`$title-logo-y`/`$title-logo-size` in `lectures.scss`), so a per-document `data-background-position` or `data-background-size` has no effect.
 
+For a standalone HTML file, use:
+
+```yaml
+format:
+  unilu-theme-revealjs:
+    embed-resources: true
+    html-math-method: mathml
+```
+
+Quarto must be able to access remote fonts and images during rendering to embed them. The default Reveal.js MathJax renderer loads from a CDN at presentation time; `mathml` avoids this for offline math in browsers that support MathML.
+
 ## Linked logo
 
 Following discussion on [quarto-cli](https://github.com/quarto-dev/quarto-cli/discussions/3082#discussioncomment-7058099), logo on each slide can point to the desired URL.

@@ -24,6 +24,8 @@ jobs:
           # To install LaTeX to build PDF book
           tinytex: false
 
+      - name: Test embedded resources
+        run: python3 tests/test_resources.py
 
       # From https://github.com/r-lib/actions/tree/v2-branch/setup-r
       - name: Setup R
