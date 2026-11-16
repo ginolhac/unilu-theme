@@ -1,5 +1,8 @@
 ## Unreleased
 
+
+## Version 2.1.1
+
 - Fixed the chapter logo for embedded presentations and deployments under a URL subpath.
 
 ## Version 2.1.0
