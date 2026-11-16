@@ -454,7 +454,7 @@ pre code:not(.sourceCode) {
 }
 
 .reveal:has(section.chapter.present) .slide-logo {
-  content: url('/_extensions/unilu-theme/uni-logo-white.png') !important;
+  content: var(--unilu-chapter-logo) !important;
 }
 
 /* extra spacing between .columns blocks — .column divs are inline-block with an
@@ -515,7 +515,7 @@ pre code:not(.sourceCode) {
 
 /* Or show a different logo */
 .reveal .chapter.h1 .slide-logo {
-  content: url('/_extensions/unilu-theme/uni-logo-white.png') !important;
+  content: var(--unilu-chapter-logo) !important;
 }
 
 /*.reveal .slides section.overview {

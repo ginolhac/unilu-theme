@@ -1,5 +1,10 @@
 ## Unreleased
 
+
+## Version 2.1.1
+
+- Fixed the chapter logo for embedded presentations and deployments under a URL subpath.
+
 ## Version 2.1.0
 
 - Added a `.grid-row` utility class: each child of the div is one grid cell, for comparison tables (e.g. task | base R | tidyverse | comment) without nested `.column` divs. Column widths are set with the `--grid-cols` custom property, defaulting to equal-width columns.
